@@ -25,6 +25,8 @@ public class Member extends BaseEntity {
     @Column(nullable = false, length = 20)
     private String name;
 
+    private Integer age;
+
     @Column(nullable = false, length = 40)
     private String address;
 
@@ -36,6 +38,7 @@ public class Member extends BaseEntity {
     private Gender gender;
 
     @Enumerated(EnumType.STRING)
+    @Column(columnDefinition = "VARCHAR(10)")
     private SocialType socialType;
 
     @Enumerated(EnumType.STRING)
