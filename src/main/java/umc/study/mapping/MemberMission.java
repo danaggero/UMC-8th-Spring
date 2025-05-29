@@ -29,4 +29,8 @@ public class MemberMission extends BaseEntity {
     @JoinColumn(name = "mission_id")
     private Mission mission;
 
+    //complete로 상태를 변경해주는 메서드
+    public void completeMission() {
+        this.status = MissionStatus.COMPLETE;
+    }
 }

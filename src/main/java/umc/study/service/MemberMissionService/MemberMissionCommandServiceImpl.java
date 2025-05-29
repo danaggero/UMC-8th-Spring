@@ -40,4 +40,13 @@ public class MemberMissionCommandServiceImpl implements MemberMissionCommandServ
 
         return MemberMissionConverter.toChallengeResultDTO(saved);
     }
+
+    @Transactional
+    public void completeMission(Long memberId, Long missionId) {
+        MemberMission memberMission = memberMissionRepository.findByMemberIdAndMissionId(memberId, missionId)
+                .orElseThrow(() -> new IllegalArgumentException("해당 미션 도전 내역이 없습니다."));
+
+        memberMission.completeMission();
+    }
+
 }

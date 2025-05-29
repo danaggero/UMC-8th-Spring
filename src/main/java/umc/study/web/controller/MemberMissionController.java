@@ -60,5 +60,19 @@ public class MemberMissionController {
         return ApiResponse.onSuccess(MissionConverter.toMissionPreviewListDTO(missions));
     }
 
+    @Operation(summary = "진행 중인 미션 완료 처리 API", description = "회원이 특정 미션을 완료 처리합니다.")
+    @Parameters({
+            @Parameter(name = "memberId", description = "회원 ID", required = true, example = "1"),
+            @Parameter(name = "missionId", description = "미션 ID", required = true, example = "2")
+    })
+    @PatchMapping("/{memberId}/missions/{missionId}/complete")
+    public ApiResponse<String> completeMission(
+            @PathVariable Long memberId,
+            @PathVariable Long missionId
+    ) {
+        commandService.completeMission(memberId, missionId);
+        return ApiResponse.onSuccess("미션이 완료되었습니다.");
+    }
+
 
 }
