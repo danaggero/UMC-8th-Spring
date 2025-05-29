@@ -22,7 +22,7 @@ public class Doctor extends BaseEntity {
 
     private String phone;
 
-    private String experience;
+    private Long experience;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "hospital_id")
